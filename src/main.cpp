@@ -128,7 +128,7 @@ int main() {
         // Activate shader
         glUseProgram(shaderProgram);
 
-        // Setup Lighting Uniforms (Blinn-Phong)
+        // Setup Lighting Uniforms (Phong)
         glUniform3fv(glGetUniformLocation(shaderProgram, "light.position"), 1, glm::value_ptr(lightPos));
         glUniform3fv(glGetUniformLocation(shaderProgram, "viewPos"), 1, glm::value_ptr(cameraPos));
 
@@ -140,12 +140,18 @@ int main() {
         glUniform1f(glGetUniformLocation(shaderProgram, "light.linear"),    0.09f);
         glUniform1f(glGetUniformLocation(shaderProgram, "light.quadratic"), 0.032f);
 
-        // Material properties
+        // Material properties for Plastic
         // Set to 1.0f (white) to preserve the original colors of the loaded texture
         glUniform3f(glGetUniformLocation(shaderProgram, "material.ambient"),  1.0f, 1.0f, 1.0f);
         glUniform3f(glGetUniformLocation(shaderProgram, "material.diffuse"),  1.0f, 1.0f, 1.0f);
         glUniform3f(glGetUniformLocation(shaderProgram, "material.specular"), 0.5f, 0.5f, 0.5f);
         glUniform1f(glGetUniformLocation(shaderProgram, "material.shininess"), 32.0f);
+
+        // // Material properties for Gold
+        // glUniform3f(glGetUniformLocation(shaderProgram, "material.ambient"),  0.247f, 0.224f, 0.066f);
+        // glUniform3f(glGetUniformLocation(shaderProgram, "material.diffuse"),  0.751f, 0.606f, 0.226f);
+        // glUniform3f(glGetUniformLocation(shaderProgram, "material.specular"), 0.628f, 0.555f, 0.366f);
+        // glUniform1f(glGetUniformLocation(shaderProgram, "material.shininess"), 51.2f);
 
         // Camera Matrices (View and Projection)
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)width / (float)height, 0.1f, 100.0f);

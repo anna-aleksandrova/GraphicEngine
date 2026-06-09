@@ -63,6 +63,5 @@ void Mesh::Draw(GLuint shaderProgram) {
     glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
-    // Always good practice to set everything back to defaults once configured
     glActiveTexture(GL_TEXTURE0);
 }
